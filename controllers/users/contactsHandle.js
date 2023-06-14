@@ -21,7 +21,14 @@ const addUserProcess = async (req,res)=>{
     });
     const result = await contact.save();
     if(result){
-
+        const message = 'You have succesfully added a contact';
+        const redirectUrl = `/user/add-contact?message=${encodeURIComponent(message)}`;
+        res.redirect(redirectUrl);
+    }
+    else{
+        const message =  'There is an error in adding process';
+        const redirectUrl = `/user/add-contact?message=${encodeURIComponent(message)}`;
+        res.redirect(redirectUrl);
     }
 }
 
